@@ -1,6 +1,2 @@
-www.baidu.com
-www.sina.com lveyou.cc www.163.com
-aliyun.com 
-signit.cn
-woami.com
-love.com
+mongodb-mongos-1.ns.me	mongodb-config-rs-1.ns.me	mongodb-shard-rs-1-1.ns.me	mongodb-mongos-2.ns.me	mongodb-config-rs-2.ns.me	mongodb-shard-rs-2-1.ns.me
+mongodb-mongos-3.ns.me	mongodb-config-rs-1.ns.me	mongo-shard-rs-3-1.ns.me
