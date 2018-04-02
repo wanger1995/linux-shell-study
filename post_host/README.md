@@ -6,7 +6,7 @@ ____________
 
 ## 用法
 - `bash ping_database.sh`	
-解释： ping ==database_host==里的域名
+解释： ping ==database_host== 里的域名
 
 - `bash ping_yewu.sh`
-解释：ping ==yewu_host==里的域名
+解释：ping ==yewu_host== 里的域名
