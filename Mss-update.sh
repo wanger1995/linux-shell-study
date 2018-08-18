@@ -7,19 +7,19 @@ function run()
     TAG_OLD=`cat wesign-mss-${MSS_NAME}-app.yml |grep image | awk -F ":" '{printf $4}' |awk -F '"' '{printf $1}'` && \
     if [ "$TAG" == "$TAG_OLD" ]
     then
-        docker stop `docker ps | grep ${MSS_NAME} |awk '{printf $1}'` >/dev/null 2>&1 
-        docker-compose -f wesign-mss-${MSS_NAME}-app.yml rm --force >>update.log 2>&1 && \
-        docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>update.log 2>&1
+        docker stop `docker ps | grep ${MSS_NAME} |awk '{printf $1}'` >/dev/null 2>>~/error.log && \
+        docker-compose -f wesign-mss-${MSS_NAME}-app.yml rm --force >>~/update.log 2>>~/error.log && \
+        docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>~/update.log 2>>~/error.log
     else
         sed -i "s/${TAG_OLD}/${TAG}/g" wesign-mss-${MSS_NAME}-app.yml && \
-        docker stop `docker ps | grep ${MSS_NAME} |awk '{printf $1}'` >>update.log 2>&1
-        docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>~/update.log 2>&1
+        docker stop `docker ps | grep ${MSS_NAME} |awk '{printf $1}'` >>~/update.log >>~/error.log  && \
+        docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>~/update.log >>~/error.log && \
     fi 
     if [ $? -eq 0 ] 
     then
         echo -e "\t\033[32;49;1m ${MSS_NAME} updated successful  \033[39;49;0m"
     else 
-        echo -e "\t\033[31;49;1m ${MSS_NAME} updated faild,cat update.log  \033[39;49;0m"
+        echo -e "\t\033[31;49;1m ${MSS_NAME} updated faild,cat ~/update.log  \033[39;49;0m"
     fi
 }
 
