@@ -16,7 +16,7 @@ function run()
         sudo docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>~/update.log 2>>~/error.log
     else
         
-        sed -i "s/${TAG_OLD}/${TAG}/g" `grep ${TAR_OLD} -rl wesign-mss-${MSS_NAME}-app.yml` && \
+        sed -i "s/${TAG_OLD}/${TAG}/g" ./wesign-mss-${MSS_NAME}-app.yml && \
         sudo docker stop ${CON_ID} >>~/update.log 2>>~/error.log && \
         sudo docker-compose -f wesign-mss-${MSS_NAME}-app.yml up -d >>~/update.log 2>>~/error.log 
     fi 
